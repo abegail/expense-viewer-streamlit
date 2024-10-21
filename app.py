@@ -1,6 +1,10 @@
 import streamlit as st
+import pandas as pd
 
-st.title("Streamlit Test")
+st.title("Expense Viewer")
 
-user_input = st.text_input("Enter some text:")
-st.write("You entered: ", user_input)
+uploaded_csv = st.file_uploader("Upload CSV file")
+
+if (uploaded_csv != None):
+    df = pd.read_csv(uploaded_csv)
+    st.dataframe(df)
